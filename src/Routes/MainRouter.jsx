@@ -10,6 +10,8 @@ import CreatePartnerProfile from "../Pages/CreatePartnerProfile";
 import PrivateRouter from "./PrivateRouter";
 import MyConnections from "../Pages/MyConnections";
 import MyProfile from "../Components/MyProfile";
+import StudyPartnerDetails from "../Components/StudyPartnerDetails";
+import axios from "axios";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +47,15 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <MyProfile />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/partner-details/:id",
+        loader: (params)=>axios.get(`http://localhost:3000/partners/details/${params}`),
+        element: (
+          <PrivateRouter>
+            <StudyPartnerDetails/>
           </PrivateRouter>
         ),
       },
