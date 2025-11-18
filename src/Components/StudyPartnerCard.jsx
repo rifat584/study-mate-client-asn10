@@ -19,7 +19,7 @@ const StudyPartnerCard = ({ partner }) => {
           </div>
         </div>
         <div className="badge badge-outline">{partner.subject}</div>
-        <Link to={`/partner-details/${partner._id}`} className="btn btn-primary mt-2">View Profile</Link>
+        <Link to={`/partners/details/${partner._id}`} className="btn btn-primary mt-2">View Profile</Link>
       </div>
     </div>
   );

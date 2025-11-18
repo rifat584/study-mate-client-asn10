@@ -8,7 +8,6 @@ const TopStudyPartners = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios.get("http://localhost:3000/partners/top-rated").then((res) => {
-      console.log(res.data);
       setTopPartners(res.data);
       setLoading(false);
     });

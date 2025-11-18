@@ -51,8 +51,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/partner-details/:id",
-        loader: (params)=>axios.get(`http://localhost:3000/partners/details/${params}`),
+        path: "/partners/details/:id",
+        loader: (params)=>fetch(`http://localhost:3000/partners/details/${params}`),
         element: (
           <PrivateRouter>
             <StudyPartnerDetails/>
