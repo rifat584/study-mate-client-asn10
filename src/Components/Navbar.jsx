@@ -5,16 +5,16 @@ const Navbar = () => {
   const navMenu = (
     <>
       <li>
-        <NavLink>Home</NavLink>
+        <NavLink to={'/'}>Home</NavLink>
       </li>
       <li>
-        <NavLink>Find Partners</NavLink>
+        <NavLink to={'/find-partners'}>Find Partners</NavLink>
       </li>
       <li>
-        <NavLink>Create Profile</NavLink>
+        <NavLink to={'/create-partner-profile'}>Create Profile</NavLink>
       </li>
       <li>
-        <NavLink>My Connections</NavLink>
+        <NavLink to={'/my-connections'}>My Connections</NavLink>
       </li>
     </>
   );
@@ -55,8 +55,8 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="navbar-end">
-        <Link className="btn btn-primary border-none mr-4">Login</Link>
-        <Link className="btn btn-outline">Register</Link>
+        <Link to={'/auth/login'} className="btn btn-primary border-none mr-4">Login</Link>
+        <Link to={'/auth/register'} className="btn btn-outline">Register</Link>
         <div className="dropdown dropdown-end">
           <div
             tabIndex={0}
