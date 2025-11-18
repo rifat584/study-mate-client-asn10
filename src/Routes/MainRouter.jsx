@@ -9,6 +9,7 @@ import AuthLayout from "../Layouts/AuthLayout";
 import CreatePartnerProfile from "../Pages/CreatePartnerProfile";
 import PrivateRouter from "./PrivateRouter";
 import MyConnections from "../Pages/MyConnections";
+import MyProfile from "../Components/MyProfile";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -36,6 +37,14 @@ const router = createBrowserRouter([
         element: (
           <PrivateRouter>
             <MyConnections />
+          </PrivateRouter>
+        ),
+      },
+      {
+        path: "/my-profile",
+        element: (
+          <PrivateRouter>
+            <MyProfile />
           </PrivateRouter>
         ),
       },
