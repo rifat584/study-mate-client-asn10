@@ -11,7 +11,7 @@ import { Link } from "react-router";
 
 const Hero = () => {
   return (
-    <div className="border border-red-500">
+    <div>
       <Swiper
         spaceBetween={30}
         centeredSlides={true}
@@ -33,8 +33,8 @@ const Hero = () => {
           >
             <div className="hero-overlay"></div>
             <div className="hero-content text-neutral-content text-center">
-              <div className="max-w-md">
-                <h1 className="mb-5 text-5xl font-bold">
+              <div className="max-w-lg">
+                <h1 className="mb-5 text-6xl font-bold">
                   Find Your Perfect Study Partner
                 </h1>
                 <p className="mb-5">
@@ -55,8 +55,8 @@ const Hero = () => {
           >
             <div className="hero-overlay"></div>
             <div className="hero-content text-neutral-content text-center">
-              <div className="max-w-md">
-                <h1 className="mb-5 text-5xl font-bold">
+              <div className="max-w-lg">
+                <h1 className="mb-5 text-6xl font-bold">
                   Study Smarter, Not Harder
                 </h1>
                 <p className="mb-5">
@@ -77,8 +77,8 @@ const Hero = () => {
           >
             <div className="hero-overlay"></div>
             <div className="hero-content text-neutral-content text-center">
-              <div className="max-w-md">
-                <h1 className="mb-5 text-5xl font-bold">
+              <div className="max-w-lg">
+                <h1 className="mb-5 text-6xl font-bold">
                   Learn Together. Grow Together.
                 </h1>
                 <p className="mb-5">

@@ -19,8 +19,8 @@ const TopStudyPartners = () => {
 
   return (
     <div>
-      <h2 className="text-5xl mb-12 mt-20 text-center font-bold">Top Study Partners</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+      <h2 className="text-5xl my-20 text-center font-bold">Top Study Partners</h2>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {topPartners.map((partner) => (
           <StudyPartnerCard key={partner._id} partner={partner} />
         ))}

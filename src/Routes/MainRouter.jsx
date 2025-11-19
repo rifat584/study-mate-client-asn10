@@ -12,6 +12,7 @@ import MyConnections from "../Pages/MyConnections";
 import MyProfile from "../Components/MyProfile";
 import StudyPartnerDetails from "../Components/StudyPartnerDetails";
 import axios from "axios";
+import Spinner from "../Components/Spinner";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -52,7 +53,8 @@ const router = createBrowserRouter([
       },
       {
         path: "/partners/details/:id",
-        loader: (params)=>fetch(`http://localhost:3000/partners/details/${params}`),
+        loader: ({params})=>fetch(`http://localhost:3000/partners-details/${params.id}`),
+        hydrateFallbackElement: <Spinner/>,
         element: (
           <PrivateRouter>
             <StudyPartnerDetails/>
