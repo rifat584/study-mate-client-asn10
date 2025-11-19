@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import AuthContext from "../Providers/AuthContext";
+import avatar from '../assets/default_avatar.jpg';
 
 const Navbar = () => {
   const { user, logOut, loading } = useContext(AuthContext);
@@ -30,6 +31,7 @@ const Navbar = () => {
       .then(() => console.log("User Logged Out"))
       .catch((err) => console.log(err.message));
   };
+
   return (
     <div className="navbar bg-base-100 shadow-sm">
       <div className="navbar-start">
@@ -79,7 +81,7 @@ const Navbar = () => {
               <div className="w-10 rounded-full">
                 <img
                   alt="Tailwind CSS Navbar component"
-                  src="https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  src={user?.photoURL || avatar}
                 />
               </div>
             </div>

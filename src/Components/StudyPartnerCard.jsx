@@ -5,7 +5,7 @@ const StudyPartnerCard = ({ partner }) => {
   return (
     <div className="card bg-base-100 shadow-xl hover:scale-105 transition-all duration-100">
       <figure>
-        <img src={partner.profileimage} />
+        <img src={partner.profileimage} className="aspect-3/2 object-cover" />
       </figure>
 
       <div className="card-body">
