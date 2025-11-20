@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import ContentContainer from "../Containers/ContentContainer";
 import { useLoaderData, useParams } from "react-router";
 import { FaStar } from "react-icons/fa";
 import { LuBadgeCheck, LuBadgeX } from "react-icons/lu";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const StudyPartnerDetails = () => {
   const { id } = useParams();
-  const partner = useLoaderData();
+  const partnerDetails = useLoaderData();
   const {
     availabilityTime,
     email,
@@ -19,8 +21,25 @@ const StudyPartnerDetails = () => {
     studyMode,
     subject,
     _id,
-  } = partner;
+  } = partnerDetails;
+  const [partner, setPartner] = useState(patnerCount);
+
   // console.log(id, partner);
+  const handlePartnerRequest = () => {
+    axios.patch(`http://localhost:3000/partner/${id}`).then((res) => {
+      if (res.data.modifiedCount) {
+        setPartner(partner + 1);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your Partner Request has been Sent!",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
+  // console.log(partner);
 
   return (
     <ContentContainer>
@@ -37,7 +56,10 @@ const StudyPartnerDetails = () => {
                 <FaStar /> {rating}
               </div>
             </div>
-            <button className="btn btn-primary btn-lg w-full my-auto">
+            <button
+              className="btn btn-primary btn-lg w-full my-auto"
+              onClick={handlePartnerRequest}
+            >
               Send Partner Request
             </button>
           </div>
@@ -76,7 +98,7 @@ const StudyPartnerDetails = () => {
               </div>
               <div className="stat bg-base-200 rounded-xl shadow p-4 w-40">
                 <div className="stat-title text-sm">Partners</div>
-                <div className="stat-value text-lg">{patnerCount}</div>
+                <div className="stat-value text-lg">{partner}</div>
               </div>
             </div>
             <div className="p-4 bg-base-200 rounded-xl shadow">

@@ -52,8 +52,8 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/partners/details/:id",
-        loader: ({params})=>fetch(`http://localhost:3000/partners-details/${params.id}`),
+        path: "/partner/details/:id",
+        loader: ({params})=>fetch(`http://localhost:3000/partner-details/${params.id}`),
         hydrateFallbackElement: <Spinner/>,
         element: (
           <PrivateRouter>

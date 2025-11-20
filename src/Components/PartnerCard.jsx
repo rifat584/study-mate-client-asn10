@@ -37,7 +37,7 @@ const PartnerCard = ({ partner }) => {
           )}
         </div>
         <Link
-          to={`/partners/details/${partner._id}`}
+          to={`/partner/details/${partner._id}`}
           className="btn btn-primary mt-4"
         >
           View Profile
