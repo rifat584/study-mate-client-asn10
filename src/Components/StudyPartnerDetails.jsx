@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ContentContainer from "../Containers/ContentContainer";
 import { useLoaderData, useParams } from "react-router";
 import { FaStar } from "react-icons/fa";
 import { LuBadgeCheck, LuBadgeX } from "react-icons/lu";
 import axios from "axios";
 import Swal from "sweetalert2";
+import AuthContext from "../Providers/AuthContext";
 
 const StudyPartnerDetails = () => {
   const { id } = useParams();
+  const { user } = useContext(AuthContext);
   const partnerDetails = useLoaderData();
   const {
     availabilityTime,
@@ -26,18 +28,33 @@ const StudyPartnerDetails = () => {
 
   // console.log(id, partner);
   const handlePartnerRequest = () => {
-    axios.patch(`http://localhost:3000/partner/${id}`).then((res) => {
-      if (res.data.modifiedCount) {
-        setPartner(partner + 1);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Your Partner Request has been Sent!",
-          showConfirmButton: false,
-          timer: 1500,
+    const partnerData = {
+      email: user?.email,
+      partnerInfo: {
+        name,
+        profileimage,
+        subject,
+        studyMode,
+      },
+    };
+
+    axios
+      .post(`http://localhost:3000/connections`, partnerData)
+      .then((res) => {
+        console.log(res.data);
+        axios.patch(`http://localhost:3000/partner/${id}`).then((res) => {
+          if (res.data.modifiedCount) {
+            setPartner(partner + 1);
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Your Partner Request has been Sent!",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
         });
-      }
-    });
+      });
   };
   // console.log(partner);
 

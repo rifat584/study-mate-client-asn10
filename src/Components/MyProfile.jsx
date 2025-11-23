@@ -1,13 +1,15 @@
-import React, { useContext, useRef } from "react";
+import React, { useContext, useRef, useState } from "react";
 import AuthContext from "../Providers/AuthContext";
 import avatar from "../assets/default_avatar.jpg";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router";
 const MyProfile = () => {
   const { user, setUser } = useContext(AuthContext);
   const modalRef = useRef();
+  const navigate = useNavigate();
   const handleModal = () => {
-    console.log("clicked");
     modalRef.current.showModal();
   };
 
@@ -20,17 +22,26 @@ const MyProfile = () => {
       photoURL: photoURL,
     })
       .then((res) => {
-        console.log(res.json);
-        modalRef.current.close()
+        modalRef.current.close();
         setUser(user);
+        navigate("/my-profile");
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.code,
+        });
+      });
   };
   return (
     <div className="min-h-screen ">
       <div className="card bg-base-100 w-96 shadow-sm mx-auto mt-20">
         <figure className="px-10 pt-10">
-          <img src={user?.photoURL || avatar} alt="" className="rounded-full w-30" />
+          <img
+            src={user?.photoURL || avatar}
+            alt=""
+            className="rounded-full w-30"
+          />
         </figure>
         <div className="card-body items-center text-center">
           <h2 className="card-title">{user?.displayName || "Anonymous"}</h2>

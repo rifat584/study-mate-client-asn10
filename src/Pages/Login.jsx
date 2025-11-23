@@ -1,16 +1,13 @@
 import React, { useContext } from "react";
 import AuthContext from "../Providers/AuthContext";
 import { Link, useLocation, useNavigate, Navigate } from "react-router";
-import Spinner from "../Components/Spinner";
+import Swal from "sweetalert2";
 
 const Login = () => {
-  const { user, emailSignin, googleLogin, loading, setLoading } = useContext(AuthContext);
+  const { user, emailSignin, googleLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from.pathname || '/';
-  if (loading) {
-    return <Spinner />;
-  }
+  const from = location.state?.from.pathname || "/";
 
   if (user) {
     return <Navigate to={from}></Navigate>;
@@ -22,19 +19,29 @@ const Login = () => {
     emailSignin(email, password)
       .then((res) => {
         const user = res.user;
-        setLoading(false)
         navigate(from, { replace: true });
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.code,
+        });
+        navigate("/auth/login");
+      });
   };
 
   const handleGoogleLogin = () => {
     googleLogin()
       .then((res) => {
-        setLoading(false)
         navigate(from, { replace: true });
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.code,
+        });
+        navigate('/auth/login')
+      });
   };
   return (
     <div className="hero bg-base-200 min-h-screen">

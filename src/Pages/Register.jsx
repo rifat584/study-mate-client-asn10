@@ -1,53 +1,64 @@
 import React, { useContext } from "react";
-import { Link, Navigate } from "react-router";
+import { Link, Navigate, useNavigate } from "react-router";
 import AuthContext from "../Providers/AuthContext";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
 
 const Register = () => {
-  const { user, setUser, emailRegister, googleLogin } = useContext(AuthContext);
+  const { user, setUser, setLoading, emailRegister, googleLogin } =
+    useContext(AuthContext);
+  const navigate = useNavigate();
+  if (user) {
+    return <Navigate to={"/"}></Navigate>;
+  }
 
-  // if (user) {
-  //   return <Navigate to={"/"}></Navigate>;
-  // }
   const handleEmailRegister = (e) => {
     e.preventDefault();
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photoURL = e.target.photourl.value;
     const password = e.target.password.value;
-    const userInfo = {
-      name,
-      email,
-      photoURL,
-      password,
-    };
-    console.log(userInfo);
+
     emailRegister(email, password)
       .then((res) => {
         const user = res.user;
-        console.log(user);
         updateProfile(auth.currentUser, {
           displayName: name,
           photoURL: photoURL,
         })
           .then((res) => {
-            console.log(res.json);
             setUser(user);
+            navigate("/");
           })
-          .catch((err) => console.log(err.message));
+          .catch((err) => {
+            Swal.fire({
+              icon: "error",
+              title: err.code,
+            });
+          });
       })
-      .catch((err) => alert(err.message));
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.code,
+        });
+      });
   };
 
   const handleGoogleRegister = () => {
     googleLogin()
       .then((res) => {
-        console.log(res.user);
         setUser(res.user);
+        setLoading(false);
+        navigate("/");
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        Swal.fire({
+          icon: "error",
+          title: err.code,
+        });
+      });
   };
   return (
     <div className="hero bg-base-200 min-h-screen">
