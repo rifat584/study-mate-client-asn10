@@ -69,7 +69,7 @@ const StudyPartnerDetails = () => {
                 className="w-full rounded-lg shadow-xl object-cover max-h-[480px]"
                 alt={name}
               />
-              <div className="absolute top-4 left-4 bg-accent text-base-100 px-4 py-1 rounded-full font-semibold shadow-lg flex gap-1 items-center text-xl">
+              <div className="absolute top-4 left-4 bg-secondary text-base-100 px-4 py-1 rounded-full font-semibold shadow-lg flex gap-1 items-center text-xl">
                 <FaStar /> {rating}
               </div>
             </div>

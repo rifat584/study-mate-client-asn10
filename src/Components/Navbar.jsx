@@ -62,7 +62,7 @@ const Navbar = () => {
         </div>
         <Link
           to={"/"}
-          className=" text-2xl font-bold bg-linear-to-br from-primary to-secondary text-transparent bg-clip-text"
+          className=" text-2xl font-bold bg-linear-to-br from-primary to-accent text-transparent bg-clip-text"
         >
           StudyMate
         </Link>

@@ -2,12 +2,7 @@
 @plugin "daisyui" {
   themes: light --default;
 }
-
-@plugin "daisyui" {
-  themes: light --default, dark --prefersdark, cupcake;
-}
-
-/* @plugin "daisyui/theme" {
+@plugin "daisyui/theme" {
   name: "light";
   --color-primary: #74BDF6;
   --color-secondary: #4D46E1;
@@ -19,8 +14,8 @@
   --color-warning: #ffc107;
   --color-error: #ff3d00;
   --color-success: #4caf50;
-} */
+}
 
-/* a.active {
-  @apply bg-linear-to-br from-primary to-secondary text-transparent bg-clip-text font-medium;
-} */
+a.active {
+  @apply bg-linear-to-br from-primary to-accent text-transparent bg-clip-text font-medium;
+}

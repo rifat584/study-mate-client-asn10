@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="w-full ">
         <div className="w-full flex justify-between items-start ">
           <div className="flex flex-1 flex-col justify-between items-start mb-6">
-            <p className=" text-2xl font-bold bg-linear-to-br from-primary to-secondary text-transparent bg-clip-text">
+            <p className=" text-2xl font-bold bg-linear-to-br from-primary to-accent text-transparent bg-clip-text">
               StudyMate
             </p>
             <p className="text-sm mt-2 max-w-sm text-center">
