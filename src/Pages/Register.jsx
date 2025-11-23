@@ -1,25 +1,42 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router";
 import AuthContext from "../Providers/AuthContext";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
+import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 
 const Register = () => {
   const { user, setUser, setLoading, emailRegister, googleLogin } =
     useContext(AuthContext);
   const navigate = useNavigate();
+  const [password, setPassword] = useState("");
+  const [pwdError, setPwdError] = useState("");
+  const [pwdVisibility, setPwdVisibility] = useState(false);
   if (user) {
     return <Navigate to={"/"}></Navigate>;
   }
 
-  const handleEmailRegister = (e) => {
+  const handlePwdValidate = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+    const regEx = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
+
+    if (!regEx.test(password)) {
+       setPwdError(
+        "Password must contain uppercase, lowercase, and be at least 6 characters."
+      );
+    } else {
+      setPwdError("");
+    }
+  };
+
+  const handleEmailRegister = async (e) => {
     e.preventDefault();
+    setLoading(true)
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photoURL = e.target.photourl.value;
-    const password = e.target.password.value;
-
     emailRegister(email, password)
       .then((res) => {
         const user = res.user;
@@ -30,6 +47,7 @@ const Register = () => {
           .then((res) => {
             setUser(user);
             navigate("/");
+            setLoading(false)
           })
           .catch((err) => {
             Swal.fire({
@@ -99,14 +117,25 @@ const Register = () => {
                   className="input w-full"
                   placeholder="Enter your Photo URL"
                 />
+                <div className="relative">
+                  <label className="label">Password</label>
+                  <span
+                    className="absolute bottom-3 right-5 z-2 text-base"
+                    onClick={() => setPwdVisibility(!pwdVisibility)}
+                  >
+                    {pwdVisibility ? <FaRegEye /> : <FaEyeSlash />}
+                  </span>
+                  <input
+                    type={pwdVisibility ? "text" : "password"}
+                    name="password"
+                    className="input w-full"
+                    placeholder="Enter your Password"
+                    value={password}
+                    onChange={handlePwdValidate}
+                  />
+                </div>
+                {<p className="text-red-500">{pwdError}</p>}
 
-                <label className="label">Password</label>
-                <input
-                  type="password"
-                  name="password"
-                  className="input w-full"
-                  placeholder="Enter your Password"
-                />
                 <button
                   className="btn btn-accent mt-4 border-none text-white"
                   type="submit"
