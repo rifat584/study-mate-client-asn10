@@ -38,23 +38,20 @@ const StudyPartnerDetails = () => {
       },
     };
 
-    axios
-      .post(`http://localhost:3000/connections`, partnerData)
-      .then((res) => {
-        console.log(res.data);
-        axios.patch(`http://localhost:3000/partner/${id}`).then((res) => {
-          if (res.data.modifiedCount) {
-            setPartner(partner + 1);
-            Swal.fire({
-              position: "center",
-              icon: "success",
-              title: "Your Partner Request has been Sent!",
-              showConfirmButton: false,
-              timer: 1500,
-            });
-          }
-        });
+    axios.post(`http://localhost:3000/connections`, partnerData).then((res) => {
+      axios.patch(`http://localhost:3000/partner/${id}`).then((res) => {
+        if (res.data.modifiedCount) {
+          setPartner(partner + 1);
+          Swal.fire({
+            position: "center",
+            icon: "success",
+            title: "Your Partner Request has been Sent!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
       });
+    });
   };
   // console.log(partner);
 
