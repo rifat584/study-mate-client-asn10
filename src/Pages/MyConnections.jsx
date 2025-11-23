@@ -28,7 +28,6 @@ const MyConnections = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios.delete(`http://localhost:3000/connections/${id}`).then((res) => {
-          console.log(res.data);
           setConnections(connections.filter((con) => con._id !== id));
         });
         Swal.fire({
