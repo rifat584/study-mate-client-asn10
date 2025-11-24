@@ -13,7 +13,9 @@ const MyConnections = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/connections?email=${user?.email}`)
+      .get(
+        `https://study-mate-server-two.vercel.app/connections?email=${user?.email}`
+      )
       .then((res) => setConnections(res.data));
   }, [user.email]);
 
@@ -27,9 +29,11 @@ const MyConnections = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:3000/connections/${id}`).then((res) => {
-          setConnections(connections.filter((con) => con._id !== id));
-        });
+        axios
+          .delete(`https://study-mate-server-two.vercel.app/connections/${id}`)
+          .then((res) => {
+            setConnections(connections.filter((con) => con._id !== id));
+          });
         Swal.fire({
           title: "Deleted!",
           text: "Your connection has been deleted.",
@@ -54,7 +58,10 @@ const MyConnections = () => {
     };
 
     axios
-      .patch(`http://localhost:3000/connections/${id}`, connectionInfo)
+      .patch(
+        `https://study-mate-server-two.vercel.app/connections/${id}`,
+        connectionInfo
+      )
       .then((res) => {
         console.log(res.data);
         if (res.data.modifiedCount) {

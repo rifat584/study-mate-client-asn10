@@ -38,20 +38,24 @@ const StudyPartnerDetails = () => {
       },
     };
 
-    axios.post(`http://localhost:3000/connections`, partnerData).then(() => {
-      axios.patch(`http://localhost:3000/partner/${id}`).then((res) => {
-        if (res.data.modifiedCount) {
-          setPartner(partner + 1);
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Your Partner Request has been Sent!",
-            showConfirmButton: false,
-            timer: 1500,
+    axios
+      .post(`https://study-mate-server-two.vercel.app/connections`, partnerData)
+      .then(() => {
+        axios
+          .patch(`https://study-mate-server-two.vercel.app/partner/${id}`)
+          .then((res) => {
+            if (res.data.modifiedCount) {
+              setPartner(partner + 1);
+              Swal.fire({
+                position: "center",
+                icon: "success",
+                title: "Your Partner Request has been Sent!",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            }
           });
-        }
       });
-    });
   };
   // console.log(partner);
 

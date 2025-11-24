@@ -13,7 +13,7 @@ const FindPartners = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/partners/query", {
+      .get("https://study-mate-server-two.vercel.app/partners/query", {
         params: {
           sort: sortValue,
           search: searchValue,

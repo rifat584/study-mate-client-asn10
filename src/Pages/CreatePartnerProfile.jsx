@@ -32,7 +32,10 @@ const CreatePartnerProfile = () => {
     };
 
     axios
-      .post(`http://localhost:3000/partners`, partnerProfileInfo)
+      .post(
+        `https://study-mate-server-two.vercel.app/partners`,
+        partnerProfileInfo
+      )
       .then((res) => {
         if (res.data.insertedId) {
           e.target.reset();
@@ -41,7 +44,7 @@ const CreatePartnerProfile = () => {
             title: "Your profile has been created successfully",
             icon: "success",
             showConfirmButton: false,
-            timer: 1500
+            timer: 1500,
           });
         }
       });

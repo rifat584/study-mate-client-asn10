@@ -53,11 +53,14 @@ const router = createBrowserRouter([
       },
       {
         path: "/partner/details/:id",
-        loader: ({params})=>fetch(`http://localhost:3000/partner-details/${params.id}`),
-        hydrateFallbackElement: <Spinner/>,
+        loader: ({ params }) =>
+          fetch(
+            `https://study-mate-server-two.vercel.app/partner-details/${params.id}`
+          ),
+        hydrateFallbackElement: <Spinner />,
         element: (
           <PrivateRouter>
-            <StudyPartnerDetails/>
+            <StudyPartnerDetails />
           </PrivateRouter>
         ),
       },
