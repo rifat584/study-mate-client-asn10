@@ -38,7 +38,7 @@ const StudyPartnerDetails = () => {
       },
     };
 
-    axios.post(`http://localhost:3000/connections`, partnerData).then((res) => {
+    axios.post(`http://localhost:3000/connections`, partnerData).then(() => {
       axios.patch(`http://localhost:3000/partner/${id}`).then((res) => {
         if (res.data.modifiedCount) {
           setPartner(partner + 1);

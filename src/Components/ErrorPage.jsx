@@ -1,25 +1,19 @@
 import React from "react";
-import { isRouteErrorResponse, useRouteError } from "react-router";
+import { isRouteErrorResponse, Link, useNavigate, useRouteError } from "react-router";
+import { BiError } from "react-icons/bi";
 
 const ErrorPage = () => {
   const error = useRouteError();
 
   if (isRouteErrorResponse(error)) {
     return (
-      <>
-        <h1>
+      <div className="min-h-screen flex flex-col items-center justify-center space-y-8">
+        <BiError size={150} color="red"/>
+        <h1 className="text-5xl font-bold">
           {error.status} {error.statusText}
         </h1>
         <p>{error.data}</p>
-      </>
-    );
-  } else if (error instanceof Error) {
-    return (
-      <div>
-        <h1>Error</h1>
-        <p>{error.message}</p>
-        <p>The stack trace is:</p>
-        <pre>{error.stack}</pre>
+        <Link to={'/'} className="btn btn-accent btn-outline">Back to Home</Link>
       </div>
     );
   } else {

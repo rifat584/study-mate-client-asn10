@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import ContentContainer from "../Containers/ContentContainer";
 import axios from "axios";
-import AuthContext from "../Providers/AuthContext";
+
 import Spinner from "../Components/Spinner";
 import PartnerCard from "../Components/PartnerCard";
 
