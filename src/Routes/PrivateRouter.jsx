@@ -11,7 +11,7 @@ const PrivateRouter = ({ children }) => {
     return <Spinner />;
   }
   if (!user) {
-    return <Navigate to={"/auth/login"} state={{ from: location }}></Navigate>;
+    return <Navigate to={"/auth/login"} state={location.pathname}></Navigate>;
   }
   return children;
 };

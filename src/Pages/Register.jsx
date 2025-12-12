@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link, Navigate, useNavigate } from "react-router";
+import { Link, Navigate, useLocation, useNavigate } from "react-router";
 import AuthContext from "../Providers/AuthContext";
 import Swal from "sweetalert2";
 import { updateProfile } from "firebase/auth";
@@ -9,7 +9,9 @@ import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 const Register = () => {
   const { user, setUser, setLoading, emailRegister, googleLogin } =
     useContext(AuthContext);
+  const location = useLocation();
   const navigate = useNavigate();
+  const from = location?.state || "/";
   const [password, setPassword] = useState("");
   const [pwdError, setPwdError] = useState("");
   const [pwdVisibility, setPwdVisibility] = useState(false);
@@ -23,7 +25,7 @@ const Register = () => {
     const regEx = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
     if (!regEx.test(password)) {
-       setPwdError(
+      setPwdError(
         "Password must contain uppercase, lowercase, and be at least 6 characters."
       );
     } else {
@@ -31,9 +33,8 @@ const Register = () => {
     }
   };
 
-  const handleEmailRegister = async (e) => {
+  const handleEmailRegister = (e) => {
     e.preventDefault();
-    setLoading(true)
     const name = e.target.name.value;
     const email = e.target.email.value;
     const photoURL = e.target.photourl.value;
@@ -44,10 +45,10 @@ const Register = () => {
           displayName: name,
           photoURL: photoURL,
         })
-          .then((res) => {
+          .then(() => {
             setUser(user);
-            navigate("/");
-            setLoading(false)
+            navigate(from, { replace: true });
+            setLoading(false);
           })
           .catch((err) => {
             Swal.fire({
@@ -69,7 +70,7 @@ const Register = () => {
       .then((res) => {
         setUser(res.user);
         setLoading(false);
-        navigate("/");
+        navigate(from, { replace: true });
       })
       .catch((err) => {
         Swal.fire({
@@ -88,7 +89,7 @@ const Register = () => {
           <div className="card-body w-md">
             <p className="text-center mb-2">
               Already have an Account?{" "}
-              <Link to={"/auth/login"} className="text-secondary">
+              <Link to={"/auth/login"} state={from} className="text-secondary">
                 Login
               </Link>
             </p>

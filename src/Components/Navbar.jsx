@@ -1,10 +1,11 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import AuthContext from "../Providers/AuthContext";
-import avatar from '../assets/default_avatar.jpg';
+import avatar from "../assets/default_avatar.jpg";
+import Spinner from "./Spinner";
 
 const Navbar = () => {
-  const { user, logOut, loading } = useContext(AuthContext);
+  const { user, logOut } = useContext(AuthContext);
   const navMenu = (
     <>
       <li>
@@ -33,7 +34,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="navbar bg-base-100 shadow-sm">
+    <div className="navbar bg-base-100 shadow-sm px-20">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">

@@ -39,10 +39,10 @@ const StudyPartnerDetails = () => {
     };
 
     axios
-      .post(`https://study-mate-server-two.vercel.app/connections`, partnerData)
+      .post(`${import.meta.env.VITE_BASE_URL}/connections`, partnerData)
       .then(() => {
         axios
-          .patch(`https://study-mate-server-two.vercel.app/partner/${id}`)
+          .patch(`${import.meta.env.VITE_BASE_URL}/partner/${id}`)
           .then((res) => {
             if (res.data.modifiedCount) {
               setPartner(partner + 1);

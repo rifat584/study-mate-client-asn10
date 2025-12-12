@@ -14,7 +14,7 @@ const MyConnections = () => {
   useEffect(() => {
     axios
       .get(
-        `https://study-mate-server-two.vercel.app/connections?email=${user?.email}`
+        `${import.meta.env.VITE_BASE_URL}/connections?email=${user?.email}`
       )
       .then((res) => setConnections(res.data));
   }, [user.email]);
@@ -30,8 +30,8 @@ const MyConnections = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`https://study-mate-server-two.vercel.app/connections/${id}`)
-          .then((res) => {
+          .delete(`${import.meta.env.VITE_BASE_URL}/connections/${id}`)
+          .then(() => {
             setConnections(connections.filter((con) => con._id !== id));
           });
         Swal.fire({
@@ -59,7 +59,7 @@ const MyConnections = () => {
 
     axios
       .patch(
-        `https://study-mate-server-two.vercel.app/connections/${id}`,
+        `/connections/${id}`,
         connectionInfo
       )
       .then((res) => {

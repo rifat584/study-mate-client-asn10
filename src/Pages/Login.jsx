@@ -7,7 +7,7 @@ const Login = () => {
   const { user, emailSignin, googleLogin } = useContext(AuthContext);
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location.state?.from.pathname || "/";
+  const from = location.state || "/";
 
   if (user) {
     return <Navigate to={from}></Navigate>;
@@ -17,8 +17,7 @@ const Login = () => {
     const email = e.target.email.value;
     const password = e.target.password.value;
     emailSignin(email, password)
-      .then((res) => {
-        const user = res.user;
+      .then(() => {
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -32,7 +31,7 @@ const Login = () => {
 
   const handleGoogleLogin = () => {
     googleLogin()
-      .then((res) => {
+      .then(() => {
         navigate(from, { replace: true });
       })
       .catch((err) => {
@@ -40,7 +39,7 @@ const Login = () => {
           icon: "error",
           title: err.code,
         });
-        navigate('/auth/login')
+        navigate("/auth/login");
       });
   };
   return (
@@ -53,7 +52,11 @@ const Login = () => {
           <div className="card-body w-sm">
             <p className="text-center mb-2">
               Don't have an Account?
-              <Link to={"/auth/register"} className="text-secondary">
+              <Link
+                to={"/auth/register"}
+                state={from}
+                className="text-secondary"
+              >
                 <span className="ml-1">Register</span>
               </Link>
             </p>

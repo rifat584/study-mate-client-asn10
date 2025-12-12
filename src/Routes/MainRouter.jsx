@@ -11,7 +11,6 @@ import PrivateRouter from "./PrivateRouter";
 import MyConnections from "../Pages/MyConnections";
 import MyProfile from "../Components/MyProfile";
 import StudyPartnerDetails from "../Components/StudyPartnerDetails";
-import axios from "axios";
 import Spinner from "../Components/Spinner";
 const router = createBrowserRouter([
   {
@@ -55,7 +54,7 @@ const router = createBrowserRouter([
         path: "/partner/details/:id",
         loader: ({ params }) =>
           fetch(
-            `https://study-mate-server-two.vercel.app/partner-details/${params.id}`
+            `${import.meta.env.VITE_BASE_URL}/partner-details/${params.id}`
           ),
         hydrateFallbackElement: <Spinner />,
         element: (

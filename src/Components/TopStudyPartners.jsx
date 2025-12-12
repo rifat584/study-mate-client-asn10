@@ -8,7 +8,7 @@ const TopStudyPartners = () => {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("https://study-mate-server-two.vercel.app/partners/top-rated")
+      .get(`${import.meta.env.VITE_BASE_URL}/partners/top-rated`)
       .then((res) => {
         setTopPartners(res.data);
         setLoading(false);

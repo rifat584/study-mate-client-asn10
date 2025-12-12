@@ -3,9 +3,8 @@ import { BounceLoader } from "react-spinners";
 
 const Spinner = () => {
   return (
-    <div className="min-h-[50vh] flex justify-center items-center">
-      <BounceLoader size={100} speedMultiplier={1} />
-      
+    <div className="flex justify-center items-center min-h-screen">
+      <BounceLoader size={90} speedMultiplier={1} aria-label="Loading" role="status" />
     </div>
   );
 };

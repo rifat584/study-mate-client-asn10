@@ -33,7 +33,7 @@ const CreatePartnerProfile = () => {
 
     axios
       .post(
-        `https://study-mate-server-two.vercel.app/partners`,
+        `${import.meta.env.VITE_BASE_URL}/partners`,
         partnerProfileInfo
       )
       .then((res) => {
