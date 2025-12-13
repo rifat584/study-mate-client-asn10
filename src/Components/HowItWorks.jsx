@@ -11,6 +11,7 @@ import {
   HiSparkles
 } from "react-icons/hi";
 import { BsStars } from "react-icons/bs";
+import { Link } from "react-router";
 
 const HowItWorks = () => {
   return (
@@ -142,10 +143,10 @@ const HowItWorks = () => {
         </div>
 
         <div className="text-center mt-16">
-          <button className="btn btn-lg bg-primary border-none text-white hover:shadow-xl hover:scale-105 transition-all duration-300 gap-2">
+          <Link to={'/find-partners'} className="btn btn-lg bg-primary border-none text-white hover:shadow-xl hover:scale-105 transition-all duration-300 gap-2">
             Get Started Now
             <HiArrowRight className="w-5 h-5" />
-          </button>
+          </Link>
           <p className="text-gray-400 text-sm mt-4">
             Free to join • No credit card required
           </p>

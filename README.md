@@ -1,10 +1,9 @@
 ⭐ StudyMate — Find Your Perfect Study Partner
 A MERN Stack Study Partner Matching Platform
-🔗 Live Client: Add URL here
-🔗 Live Server (Vercel): Add URL here
-🔗 Video Demonstration: Add Video Link here
-📦 Client Repo: Add GitHub Link
-📦 Server Repo: Add GitHub Link
+🔗 Live Client: [https://study-mate-b5716.web.app/]
+🔗 Live Server (Render): [https://study-mate-server-ssmi.onrender.com/]
+📦 Client Repo: [https://github.com/rifat584/study-mate-client-asn10]
+📦 Server Repo: [https://github.com/rifat584/study-mate-server-asn10]
 
 📘 Project Overview
 StudyMate is a MERN Stack (MongoDB, Express, React, Node.js) based web platform designed to help students connect with the right study partners. Users can find partners by subject, expertise, experience level, and study mode — making the learning process more engaging and effective.

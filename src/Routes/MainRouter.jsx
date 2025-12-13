@@ -57,6 +57,7 @@ const router = createBrowserRouter([
             `${import.meta.env.VITE_BASE_URL}/partner-details/${params.id}`
           ),
         hydrateFallbackElement: <Spinner />,
+        errorElement: <ErrorPage></ErrorPage>,
         element: (
           <PrivateRouter>
             <StudyPartnerDetails />

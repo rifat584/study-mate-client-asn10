@@ -26,7 +26,6 @@ const StudyPartnerDetails = () => {
   } = partnerDetails;
   const [partner, setPartner] = useState(patnerCount);
 
-  // console.log(id, partner);
   const handlePartnerRequest = () => {
     const partnerData = {
       email: user?.email,

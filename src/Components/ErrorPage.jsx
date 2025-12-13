@@ -1,5 +1,5 @@
 import React from "react";
-import { isRouteErrorResponse, Link, useNavigate, useRouteError } from "react-router";
+import { isRouteErrorResponse, Link, useRouteError } from "react-router";
 import { BiError } from "react-icons/bi";
 
 const ErrorPage = () => {

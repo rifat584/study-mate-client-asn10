@@ -13,7 +13,8 @@ const Review = () => {
             Student Success Stories
           </h2>
           <p className="text-gray-500 max-w-xl mx-auto">
-            Real experiences from students who found their perfect study partners
+            Real experiences from students who found their perfect study
+            partners
           </p>
         </div>
 
@@ -22,14 +23,14 @@ const Review = () => {
             <div className="absolute inset-0 bg-linear-to-r from-primary to-accent rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
             <div className="relative bg-base-100/80 backdrop-blur-xl rounded-2xl p-8 border border-white/20 h-full">
               <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((i) => (
+                {[...Array(5)].map((_,i) => (
                   <FaStar key={i} className="w-5 h-5 text-yellow-400" />
                 ))}
               </div>
 
               <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-                "StudyMate helped me find a partner who studies the same subject and
-                schedule as me. I finally study consistently."
+                "StudyMate helped me find a partner who studies the same subject
+                and schedule as me. I finally study consistently."
               </p>
 
               <div className="flex items-center gap-4">
@@ -43,7 +44,9 @@ const Review = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg">Sara Ahmed</h3>
-                  <p className="text-gray-500 text-sm">Medical Student • Dhaka</p>
+                  <p className="text-gray-500 text-sm">
+                    Medical Student • Dhaka
+                  </p>
                 </div>
               </div>
             </div>
@@ -52,22 +55,15 @@ const Review = () => {
           <div className="group relative md:scale-105">
             <div className="absolute inset-0 bg-linear-to-r from-primary to-accent rounded-2xl blur-xl opacity-30 group-hover:opacity-40 transition-opacity"></div>
             <div className="relative bg-linear-to-br from-primary to-accent rounded-2xl p-8 text-white h-full">
-              <div className="absolute top-4 right-4 bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs font-medium">
-                ⭐ Top Review
-              </div>
-
               <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((i) => (
-                  <FaStar
-                    key={i}
-                    className={`w-5 h-5 text-yellow-300`}
-                  />
+                {[...Array(5)].map((_,i) => (
+                  <FaStar key={i} className={`w-5 h-5 text-yellow-300`} />
                 ))}
               </div>
 
               <p className="text-white/90 leading-relaxed mb-6 text-lg">
-                "The matching system is clean and simple. I found someone to practice
-                physics with every evening."
+                "The matching system is clean and simple. I found someone to
+                practice physics with every evening."
               </p>
 
               <div className="flex items-center gap-4">
@@ -78,7 +74,9 @@ const Review = () => {
                 />
                 <div>
                   <h3 className="font-bold text-lg">Tanvir Hasan</h3>
-                  <p className="text-white/70 text-sm">Engineering Student • BUET</p>
+                  <p className="text-white/70 text-sm">
+                    Engineering Student • BUET
+                  </p>
                 </div>
               </div>
             </div>
@@ -88,14 +86,14 @@ const Review = () => {
             <div className="absolute inset-0 bg-linear-to-r from-primary to-secondary rounded-2xl blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
             <div className="relative bg-base-100/80 backdrop-blur-xl rounded-2xl p-8 border border-white/20 h-full">
               <div className="flex gap-1 mb-4">
-                {[...Array(5)].map((i) => (
+                {[...Array(5)].map((_,i) => (
                   <FaStar key={i} className="w-5 h-5 text-yellow-400" />
                 ))}
               </div>
 
               <p className="text-gray-700 leading-relaxed mb-6 text-lg">
-                "I used to procrastinate a lot. Studying with a partner changed my
-                routine completely."
+                "I used to procrastinate a lot. Studying with a partner changed
+                my routine completely."
               </p>
 
               <div className="flex items-center gap-4">
@@ -109,7 +107,9 @@ const Review = () => {
                 </div>
                 <div>
                   <h3 className="font-bold text-lg">Jannat Zerin</h3>
-                  <p className="text-gray-500 text-sm">Business Student • IBA</p>
+                  <p className="text-gray-500 text-sm">
+                    Business Student • IBA
+                  </p>
                 </div>
               </div>
             </div>
